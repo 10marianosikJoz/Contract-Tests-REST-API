@@ -9,7 +9,7 @@ class ProductClient {
 
     private final WebClient webClient;
 
-    ProductClient(WebClient webClient) {
+    ProductClient(final WebClient webClient) {
         this.webClient = webClient;
     }
 
