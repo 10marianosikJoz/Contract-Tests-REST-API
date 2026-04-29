@@ -13,22 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-/**
- * ============================================================
- *  PROVIDER SIDE - Pact Verification Test (product-service)
- * ============================================================
- *
- * Co się tutaj dzieje krok po kroku:
- *
- * 1. Pact wczytuje plik kontraktu JSON z @PactFolder
- *    (wygenerowany wcześniej przez order-service)
- * 2. Dla każdej interakcji w kontrakcie:
- *    a. Wywołuje metodę @State - ustawia wymagany stan serwisu
- *    b. Wysyła żądanie HTTP do naszego kontrolera (MockMvc)
- *    c. Porównuje odpowiedź z tym czego oczekuje kontrakt
- * 3. Jeśli odpowiedź nie pasuje do kontraktu → test FAIL
- **/
-
 @SpringBootTest
 @Provider("product-service")
 @PactFolder("src/test/resources/pacts")
