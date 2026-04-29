@@ -1,0 +1,110 @@
+{
+  "consumer": {
+    "name": "order-service"
+  },
+  "interactions": [
+    {
+      "comments": {
+        "testname": "com.example.orderservice.ProductClientPactTest.shouldReturnProduct_whenProductExists(MockServer)",
+        "text": [
+
+        ]
+      },
+      "description": "a request for product with id 1",
+      "key": "eb7cd723",
+      "pending": false,
+      "providerStates": [
+        {
+          "name": "product with id 1 exists"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/products/1"
+      },
+      "response": {
+        "body": {
+          "content": {
+            "id": 1,
+            "name": "Laptop",
+            "price": 2999.99
+          },
+          "contentType": "application/json",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ]
+        },
+        "matchingRules": {
+          "body": {
+            "$.id": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ]
+            },
+            "$.name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.price": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "decimal"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      },
+      "transport": "http",
+      "type": "Synchronous/HTTP"
+    },
+    {
+      "comments": {
+        "testname": "com.example.orderservice.ProductClientPactTest.shouldReturnEmpty_whenProductNotFound(MockServer)",
+        "text": [
+
+        ]
+      },
+      "description": "a request for non-existing product",
+      "key": "70af3c35",
+      "pending": false,
+      "providerStates": [
+        {
+          "name": "product with id 999 does not exist"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/products/999"
+      },
+      "response": {
+        "status": 404
+      },
+      "transport": "http",
+      "type": "Synchronous/HTTP"
+    }
+  ],
+  "metadata": {
+    "pact-jvm": {
+      "version": "4.6.20"
+    },
+    "pactSpecification": {
+      "version": "4.0"
+    }
+  },
+  "provider": {
+    "name": "product-service"
+  }
+}
